@@ -17,8 +17,10 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(formData)
-    alert(`Obrigado ${formData.name}`)
+    setTimeout(() => {
+      setStep(0)
+      setFormData(null)
+    }, 3000)
   }
 
   return (

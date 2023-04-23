@@ -12,6 +12,7 @@ const SecondStepForm = ({ step, setStep, formData, setFormData }) => {
   const [ year, setYear ] = useState("")
   const [ model, setModel ] = useState("")
   const [ formIsValid, setFormIsValid ] = useState(false)
+  const [ sent, setSent ] = useState(false)
 
   useEffect(() => {
     if(formData.isApp !== undefined) {
@@ -28,12 +29,17 @@ const SecondStepForm = ({ step, setStep, formData, setFormData }) => {
     setFormIsValid(false)
   }, [isApp, plate, brand, year, model])
 
-  const handleClick = () => {
+  const saveData = () => {
     setFormData({...formData, isApp, plate, brand, year, model})
   }
 
+  const handleClick = () => {
+    saveData()
+    setSent(true)
+  }
+
   const handleBack = () => {
-    handleClick()
+    saveData()
     setStep(step-1)
   }
 
@@ -84,7 +90,11 @@ const SecondStepForm = ({ step, setStep, formData, setFormData }) => {
 
       <div className="btn-wrapper">
         <Button text={"Voltar"} onClick={() => handleBack()} style={{backgroundColor: "rgba(0, 0, 0, 0.4)"}} />
-        <Button type="submit" text={"Enviar"} disabled={!formIsValid} onClick={() => handleClick()} />
+        {sent ? 
+          <Button text={"Enviado"} style={{backgroundColor: "rgba(34, 139, 34, 1)"}} />
+          :
+          <Button type="submit" text={"Enviar"} disabled={!formIsValid} onClick={() => handleClick()} />
+        }
       </div>
     </>
   )
