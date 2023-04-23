@@ -62,6 +62,11 @@ export const InputContainer = styled.div`
     width: 100%;
   }
 
+  .error-message{
+    font-size: 0.75rem;
+    color: #ff4040;
+  }
+
 `
 
 

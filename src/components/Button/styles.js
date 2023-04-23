@@ -15,4 +15,13 @@ export const StyledButton = styled.button`
   font-size: 0.875rem;
   color: #fff;
   cursor: pointer;
+  transition: .5s;
+
+  &[disabled]:hover{
+    cursor: not-allowed;
+  }
+
+  &:disabled{
+    opacity: 0.4;
+  }
 `

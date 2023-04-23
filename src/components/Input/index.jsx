@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { IMaskInput } from "react-imask"
 import Select from "react-select"
 
-const Input = ({id, type="text", title, icon, placeholder, ...inputProps}) => {
+const Input = ({id, type="text", title, icon, placeholder, errorMessage, ...inputProps}) => {
 
   return (
     <InputContainer type={type}>
@@ -19,7 +19,7 @@ const Input = ({id, type="text", title, icon, placeholder, ...inputProps}) => {
             required
           />
         }
-        {type === "email" &&
+        {type === "phone" && 
           <IMaskInput
             id={id}
             mask="(00) 00000-0000"
@@ -35,10 +35,13 @@ const Input = ({id, type="text", title, icon, placeholder, ...inputProps}) => {
             placeholder={placeholder}
             {...inputProps}
             noOptionsMessage={() => "Nenhum resultado encontrado"}
-            
+            required
           />
         }        
       </div>
+      {errorMessage && 
+        <p className="error-message">{errorMessage}</p>
+      }
     </InputContainer>
   )
 }
@@ -49,6 +52,7 @@ Input.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.object,
   placeholder: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   inputProps: PropTypes.object
 }
 
