@@ -2,8 +2,9 @@ import { Input } from "../Input"
 import { Button } from "../Button"
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
+import { InputSwitch } from "../InputSwitch";
 
-const SecondStepForm = ({ step, setStep, setFormData }) => {
+const SecondStepForm = ({ step, setStep }) => {
   const [ plate, setPlate ] = useState("")
   const [ formIsValid, setFormIsValid ] = useState(false)
 
@@ -18,9 +19,10 @@ const SecondStepForm = ({ step, setStep, setFormData }) => {
 
   return (
     <>
+      <InputSwitch id={"IsApp"} text={"Você é Motorista de Aplicativo?"} />
       <Input 
         id={"VehiclePlate"}
-        title={"Nome"}
+        title={"Placa"}
         placeholder={"Placa do veículo"}
         value={plate}
         onChange={(event) => setPlate(event.target.value)}
