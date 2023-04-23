@@ -15,9 +15,11 @@ const SecondStepForm = ({ step, setStep, formData, setFormData }) => {
   const [ sent, setSent ] = useState(false)
 
   useEffect(() => {
-    if(formData.isApp !== undefined) {
-      setIsApp(formData.isApp)
-      setPlate(formData.plate)
+    if(formData !== null) {
+      if(formData.isApp !== undefined) {
+        setIsApp(formData.isApp)
+        setPlate(formData.plate)
+      }
     }
   }, [formData])
  

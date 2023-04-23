@@ -20,10 +20,15 @@ export const FormContainer = styled.form`
 `
 
 export const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  gap: 12px;
+
+  .animation-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    gap: 12px;
+    width: "100%"
+  }
 `

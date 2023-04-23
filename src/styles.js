@@ -12,5 +12,6 @@ export const Container = styled.div`
     justify-content: center;
     background: linear-gradient(89.87deg, #173C79 0.11%, #FF4040 100.27%), #FFFFFF;
   }
+
 `
 
