@@ -6,14 +6,22 @@ import PropTypes from 'prop-types'
 import { validateEmail } from "../../utils/validateEmail"
 import { ufList } from "../../utils/config"
 
-const FirstStepForm = ({ setStep, setFormData }) => {
+const FirstStepForm = ({ setStep, formData, setFormData }) => {
   const [ name, setName ] = useState("")
   const [ email, setEmail ] = useState("")
   const [ phoneNumber, setPhoneNumber ] = useState("")
   const [ stateID, setStateID ] = useState(null)
   const [ formIsValid, setFormIsValid ] = useState(false)
   const [ errorMessage, setErrorMessage ] = useState(null)
- 
+
+  useEffect(() => {
+    if(formData !== null) {
+      setName(formData.name)
+      setEmail(formData.email)
+      setPhoneNumber(formData.phoneNumber)
+    }
+  }, [formData])
+   
   useEffect(() => {
     if(name !== "" && email !== "" && phoneNumber !== "" && stateID !== null) {
       setFormIsValid(true)
@@ -24,7 +32,7 @@ const FirstStepForm = ({ setStep, setFormData }) => {
 
   const handleClick = () => {
     if(validateEmail(email)) {
-      setFormData({name, email, phoneNumber, stateID})
+      setFormData({...formData, name, email, phoneNumber, stateID})
       setStep(1)
     }
     else {
@@ -79,6 +87,7 @@ const FirstStepForm = ({ setStep, setFormData }) => {
 
 FirstStepForm.propTypes = {
   setStep: PropTypes.func,
+  formData: PropTypes.object,
   setFormData: PropTypes.func
 }
 

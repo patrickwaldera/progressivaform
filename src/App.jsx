@@ -7,8 +7,8 @@ import { FirstStepForm } from "./components/FirstStepForm";
 import { SecondStepForm } from "./components/SecondStepForm";
 
 const App = () => {
-  const [ step, setStep ] = useState(1)
-  const [ formData, setFormData ] = useState({})
+  const [ step, setStep ] = useState(0)
+  const [ formData, setFormData ] = useState(null)
 
   const title = [
     "Dados para Cotação",
@@ -18,6 +18,7 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log(formData)
+    alert(`Obrigado ${formData.name}`)
   }
 
   return (
@@ -25,8 +26,8 @@ const App = () => {
       <main>
         <Box>
           <Form onSubmit={handleSubmit} title={title[step]}>
-            {step === 0 && <FirstStepForm setStep={setStep} setFormData={setFormData} />}
-            {step === 1 && <SecondStepForm step={step} setStep={setStep} />}
+            {step === 0 && <FirstStepForm setStep={setStep} formData={formData} setFormData={setFormData} />}
+            {step === 1 && <SecondStepForm step={step} setStep={setStep} formData={formData} setFormData={setFormData}/>}
           </Form>
         </Box>
       </main>

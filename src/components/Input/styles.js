@@ -66,7 +66,7 @@ export const InputContainer = styled.div`
     font-size: 0.75rem;
     color: #ff4040;
   }
-
+  
 `
 
 
